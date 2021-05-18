@@ -36,6 +36,10 @@ public class Narocilo {
       return restavracija;
    }
 
+   public String getVsebina(){
+      return vsebina;
+   }
+
    @Override
    public String toString() {
       return restavracija.toString();
