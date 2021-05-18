@@ -5,7 +5,6 @@
  ***********************************************************************/
 
 package com.ui.flyingfutr;
-import java.util.*;
 
 /** @pdOid 862ddf8b-41cf-44b8-be1d-0eb3aef344f6 */
 public class PreveriLokacijoNarocila {
@@ -203,28 +202,28 @@ public class PreveriLokacijoNarocila {
    public void setDostavljalec(java.util.Collection newDostavljalec) {
       removeAllDostavljalec();
       for (java.util.Iterator iter = newDostavljalec.iterator(); iter.hasNext();)
-         addDostavljalec((Dostavljalec)iter.next());
+         addDostavljalec((Dostavljavec)iter.next());
    }
    
    /** @pdGenerated default add
-     * @param newDostavljalec */
-   public void addDostavljalec(Dostavljalec newDostavljalec) {
-      if (newDostavljalec == null)
+     * @param newDostavljavec */
+   public void addDostavljalec(Dostavljavec newDostavljavec) {
+      if (newDostavljavec == null)
          return;
       if (this.dostavljalec == null)
          this.dostavljalec = new java.util.HashSet();
-      if (!this.dostavljalec.contains(newDostavljalec))
-         this.dostavljalec.add(newDostavljalec);
+      if (!this.dostavljalec.contains(newDostavljavec))
+         this.dostavljalec.add(newDostavljavec);
    }
    
    /** @pdGenerated default remove
-     * @param oldDostavljalec */
-   public void removeDostavljalec(Dostavljalec oldDostavljalec) {
-      if (oldDostavljalec == null)
+     * @param oldDostavljavec */
+   public void removeDostavljalec(Dostavljavec oldDostavljavec) {
+      if (oldDostavljavec == null)
          return;
       if (this.dostavljalec != null)
-         if (this.dostavljalec.contains(oldDostavljalec))
-            this.dostavljalec.remove(oldDostavljalec);
+         if (this.dostavljalec.contains(oldDostavljavec))
+            this.dostavljalec.remove(oldDostavljavec);
    }
    
    /** @pdGenerated default removeAll */
