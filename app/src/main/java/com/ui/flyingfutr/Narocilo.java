@@ -32,16 +32,20 @@ public class Narocilo {
       return dostavljavec;
    }
 
-   public Restavracija getRestavracija() {
-      return restavracija;
-   }
-
    public String getVsebina(){
       return vsebina;
    }
 
+   public Uporabnik getUporabnik() {
+      return uporabnik;
+   }
+
+   public Restavracija getRestavracija() {
+      return restavracija;
+   }
+
    @Override
    public String toString() {
-      return restavracija.toString();
+      return vsebina.toString();
    }
 }
