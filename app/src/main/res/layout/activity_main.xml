@@ -138,6 +138,13 @@
             tools:layout_editor_absoluteX="210dp"
             tools:layout_editor_absoluteY="372dp" />
 
+        <ImageView
+            android:id="@+id/deliveryImageView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/delivery"
+            tools:layout_editor_absoluteX="210dp"
+            tools:layout_editor_absoluteY="372dp" />
 
     </RelativeLayout>
 
