@@ -74,19 +74,19 @@ public class ZM_SledilniZahtevek extends AppCompatActivity {
            r0
    );
 
-   //Alternativni tok
    Narocilo n1 = new Narocilo(
-           0,
+           1,
            "Kranjska klobasa z zeljem\nKruh",
            d0,
            u0,
            r0
    );
 
+   //Alternativni tok
    Narocilo n2 = new Narocilo(
-           1,
+           2,
            "Pica klasika\nPivo Laško",
-           d1,
+           null,
            u0,
            r1
    );
@@ -108,14 +108,10 @@ public class ZM_SledilniZahtevek extends AppCompatActivity {
       u0.addPretekloNarocilo(n1);
       u0.addAktivnoNarocilo(n2);
 
-      preveriLokacijoNarocila = new PreveriLokacijoNarocila();
-      preveriLokacijoNarocila.setUporabnik(u0);
-
       zacniIzbiro();
    }
 
    /** @pdRoleInfo migr=no name=PreveriLokacijoNarocila assc=association1 mult=1..1 */
-   public PreveriLokacijoNarocila preveriLokacijoNarocila;
    
    /** @param narocilo
     * @pdOid e2c8ea13-2d12-4b1f-ba28-b0d1413dec7a */
@@ -123,7 +119,7 @@ public class ZM_SledilniZahtevek extends AppCompatActivity {
 
       vsebinaTextView.setText(narocilo.getVsebina());
       restavracijaTextView.setText(narocilo.getRestavracija().toString());
-      koordinate = preveriLokacijoNarocila.getPodatkiNarocila(narocilo);
+      koordinate = PreveriLokacijoNarocila.getPodatkiNarocila(narocilo);
 
       prikaziZemljevid(koordinate, izracunajCasDostave(koordinate));
 
@@ -191,9 +187,9 @@ public class ZM_SledilniZahtevek extends AppCompatActivity {
    
    /** @pdOid 82e3272a-8269-41d3-96f3-9fe20a26270a */
    public void zacniIzbiro() {
-      List<Narocilo> narocila = preveriLokacijoNarocila.getAktivnaNarocila();
+      List<Narocilo> narocila = u0.getAktivnaNarocila();
       if (narocila.size() < 1){
-         narocila = preveriLokacijoNarocila.getPreteklaNarocila();
+         narocila = u0.getPreteklaNarocila();
       }
 
       prikaziNarocila(narocila);
