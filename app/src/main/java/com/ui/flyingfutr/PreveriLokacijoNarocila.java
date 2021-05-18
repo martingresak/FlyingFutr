@@ -6,6 +6,8 @@
 
 package com.ui.flyingfutr;
 
+import java.util.List;
+
 /** @pdOid 862ddf8b-41cf-44b8-be1d-0eb3aef344f6 */
 public class PreveriLokacijoNarocila {
    /** @pdRoleInfo migr=no name=Narocilo assc=association2 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
@@ -13,7 +15,7 @@ public class PreveriLokacijoNarocila {
    /** @pdRoleInfo migr=no name=Restavracija assc=association3 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
    public java.util.Collection restavracija;
    /** @pdRoleInfo migr=no name=Uporabnik assc=association4 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
-   public java.util.Collection uporabnik;
+   public Uporabnik uporabnik;
    /** @pdRoleInfo migr=no name=Dostavljalec assc=association5 coll=java.util.Collection impl=java.util.HashSet mult=0..* */
    public java.util.Collection dostavljalec;
 
@@ -27,15 +29,14 @@ public class PreveriLokacijoNarocila {
    }
    
    /** @pdOid 0a38bd2c-88aa-484c-85f6-934c348b66fb */
-   public Narocilo[] getAktivnaNarocila() {
-      // TODO: implement
-      return null;
+   public List<Narocilo> getAktivnaNarocila() {
+      return uporabnik.getAktivnaNarocila();
    }
    
    /** @pdOid 4ed92a9e-7610-4a6c-b10f-3b9dedc2bef5 */
-   public Narocilo[] getPreteklaNarocila() {
+   public List<Narocilo> getPreteklaNarocila() {
       // TODO: implement
-      return null;
+      return uporabnik.getPreteklaNarocila();
    }
    
    
@@ -136,53 +137,20 @@ public class PreveriLokacijoNarocila {
          restavracija.clear();
    }
    /** @pdGenerated default getter */
-   public java.util.Collection getUporabnik() {
-      if (uporabnik == null)
-         uporabnik = new java.util.HashSet();
+   public Uporabnik getUporabnik() {
       return uporabnik;
    }
-   
-   /** @pdGenerated default iterator getter */
-   public java.util.Iterator getIteratorUporabnik() {
-      if (uporabnik == null)
-         uporabnik = new java.util.HashSet();
-      return uporabnik.iterator();
-   }
+
    
    /** @pdGenerated default setter
      * @param newUporabnik */
-   public void setUporabnik(java.util.Collection newUporabnik) {
-      removeAllUporabnik();
-      for (java.util.Iterator iter = newUporabnik.iterator(); iter.hasNext();)
-         addUporabnik((Uporabnik)iter.next());
+   public void setUporabnik(Uporabnik newUporabnik) {
+      uporabnik = newUporabnik;
    }
    
-   /** @pdGenerated default add
-     * @param newUporabnik */
-   public void addUporabnik(Uporabnik newUporabnik) {
-      if (newUporabnik == null)
-         return;
-      if (this.uporabnik == null)
-         this.uporabnik = new java.util.HashSet();
-      if (!this.uporabnik.contains(newUporabnik))
-         this.uporabnik.add(newUporabnik);
-   }
+
    
-   /** @pdGenerated default remove
-     * @param oldUporabnik */
-   public void removeUporabnik(Uporabnik oldUporabnik) {
-      if (oldUporabnik == null)
-         return;
-      if (this.uporabnik != null)
-         if (this.uporabnik.contains(oldUporabnik))
-            this.uporabnik.remove(oldUporabnik);
-   }
-   
-   /** @pdGenerated default removeAll */
-   public void removeAllUporabnik() {
-      if (uporabnik != null)
-         uporabnik.clear();
-   }
+
    /** @pdGenerated default getter */
    public java.util.Collection getDostavljalec() {
       if (dostavljalec == null)

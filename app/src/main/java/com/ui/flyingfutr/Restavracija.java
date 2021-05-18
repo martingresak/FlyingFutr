@@ -34,4 +34,8 @@ public class Restavracija {
       return koordinataY;
    }
 
+   @Override
+   public String toString() {
+      return ime;
+   }
 }

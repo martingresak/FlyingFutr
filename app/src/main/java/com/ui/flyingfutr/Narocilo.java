@@ -32,4 +32,9 @@ public class Narocilo {
       return dostavljavec;
    }
 
+   @Override
+   public String toString() {
+      return restavracija.toString();
+   }
+
 }

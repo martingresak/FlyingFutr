@@ -33,6 +33,8 @@ public class Uporabnik {
       this.lastName = lastName;
       this.koordinataX = koordinataX;
       this.koordinataY = koordinataY;
+      aktivnaNarocila = new ArrayList<Narocilo>();
+      preteklaNarocila = new ArrayList<Narocilo>();
    }
    
    /** @pdOid 62136d5c-3182-4c37-9f27-a9438406c9a2 */
@@ -54,5 +56,14 @@ public class Uporabnik {
    public List<Narocilo> getPreteklaNarocila() {
       return preteklaNarocila;
    }
+
+   public void addAktivnoNarocilo(Narocilo narocilo) {
+      aktivnaNarocila.add(narocilo);
+   }
+
+   public void addPretekloNarocilo(Narocilo narocilo) {
+      preteklaNarocila.add(narocilo);
+   }
+
 
 }
