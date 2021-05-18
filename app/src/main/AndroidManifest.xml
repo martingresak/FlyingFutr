@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FlyingFutr">
-        <activity android:name=".ZmSledilniZahtevek">
+        <activity android:name=".ZM_SledilniZahtevek">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

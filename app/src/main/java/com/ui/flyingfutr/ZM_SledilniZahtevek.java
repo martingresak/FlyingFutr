@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,41 +20,49 @@ import java.util.Arrays;
 import java.util.List;
 
 /** @pdOid 8b5ca5cc-781f-4718-b454-cdc9ab32336a */
-public class ZmSledilniZahtevek extends AppCompatActivity {
+public class ZM_SledilniZahtevek extends AppCompatActivity {
 
    private Spinner narocilaSpinner;
    private List<Narocilo> narociloList;
-   private TextView restavracijaTextView;
+   private TextView restavracijaTextView, casDostaveTextView, vsebinaTextView;
    private double[] koordinate;
+   private ImageView zemljevidImageView;
+   private ImageView userImageView;
 
    Dostavljavec d0 = new Dostavljavec(
            0,
            "kolo",
-           560,
-           510
+           12,
+           5
    );
 
+   Dostavljavec d1 = new Dostavljavec(
+           1,
+           "kolo",
+           -9,
+           -8
+   );
 
    Restavracija r0 = new Restavracija(
            0,
            "Gostilna pri Jožetu",
-           560,
-           510
+           20,
+           10
    );
 
    Restavracija r1 = new Restavracija(
            1,
            "Picerija Špica",
-           500,
-           190
+           -10,
+           -4
    );
 
    Uporabnik u0 = new Uporabnik(
            0,
            "Miha",
            "Novak",
-           156,
-           377
+           0,
+           0
    );
 
    //Osnovni tok
@@ -76,7 +86,7 @@ public class ZmSledilniZahtevek extends AppCompatActivity {
    Narocilo n2 = new Narocilo(
            1,
            "Pica klasika\nPivo Laško",
-           d0,
+           d1,
            u0,
            r1
    );
@@ -89,6 +99,10 @@ public class ZmSledilniZahtevek extends AppCompatActivity {
 
       narocilaSpinner = (Spinner) findViewById(R.id.narocilaSpinner);
       restavracijaTextView = (TextView) findViewById(R.id.restavracijaTextView);
+      casDostaveTextView = (TextView) findViewById(R.id.casDostaveText);
+      vsebinaTextView = (TextView) findViewById(R.id.vsebinaTextView);
+      zemljevidImageView = (ImageView) findViewById(R.id.zemljevidImageView);
+      userImageView = (ImageView) findViewById(R.id.userImageView);
 
       u0.addAktivnoNarocilo(n0);
       u0.addPretekloNarocilo(n1);
@@ -106,9 +120,15 @@ public class ZmSledilniZahtevek extends AppCompatActivity {
    /** @param narocilo
     * @pdOid e2c8ea13-2d12-4b1f-ba28-b0d1413dec7a */
    public void izberiNarocilo(Narocilo narocilo) {
+
+      vsebinaTextView.setText(narocilo.getVsebina());
+      restavracijaTextView.setText(narocilo.getRestavracija().toString());
       koordinate = preveriLokacijoNarocila.getPodatkiNarocila(narocilo);
 
       prikaziZemljevid(koordinate, izracunajCasDostave(koordinate));
+
+
+
    }
    
    /** @pdOid e59af67f-356e-43b6-b36b-0b979464510f */
@@ -140,15 +160,33 @@ public class ZmSledilniZahtevek extends AppCompatActivity {
    /** @param koordinate
     * @pdOid 2b0c988f-7caa-4e1c-a298-8bb01e3d35ce */
    public int izracunajCasDostave(double[] koordinate) {
-      // TODO: implement
-      return 0;
+      double distance = Math.sqrt((koordinate[0] - koordinate[2])* (koordinate[0] - koordinate[2]) + (koordinate[2] - koordinate[3]) * (koordinate[2] - koordinate[3]));
+      return (int) (distance * 1.2);
    }
    
    /** @param koordinate 
     * @param cas
     * @pdOid ea7b48c7-13c8-4b3c-800a-a4226882fee7 */
    public void prikaziZemljevid(double[] koordinate, int cas) {
-      // TODO: implement
+      String text = cas + "min";
+      casDostaveTextView.setText(text);
+
+      RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.relativeLayout);
+
+
+      double width = zemljevidImageView.getWidth();
+      double height = zemljevidImageView.getHeight();
+
+      double centreX = width  / 2;
+      double centreY = height / 2;
+
+      RelativeLayout.LayoutParams params1 =new RelativeLayout.LayoutParams(100, 100);
+
+      params1.leftMargin = zemljevidImageView.getWidth()/2 -160;
+      params1.topMargin = zemljevidImageView.getHeight() / 2 -100;
+
+      userImageView.setLayoutParams(params1);
+
    }
    
    /** @pdOid 82e3272a-8269-41d3-96f3-9fe20a26270a */
