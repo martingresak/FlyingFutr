@@ -21,11 +21,24 @@ public class PreveriLokacijoNarocila {
 
    /**
     * 
-    * @param idNarocila
+    * @param n
     * @pdOid 7d8cda83-5564-4248-a061-ec0743ebd855 */
-   public double[] getPodatkiNarocila(int idNarocila) {
-      // TODO: implement
-      return null;
+   public double[] getPodatkiNarocila(Narocilo n) {
+      double[] koordinate = new double[4];
+      koordinate[0] = uporabnik.getUporabnikKoordinataX();
+      koordinate[1] = uporabnik.getUporabnikKoordinataY();
+      Dostavljavec dostavljavec = n.getDostavljalec();
+
+      if (dostavljavec != null) {
+         koordinate[2] = dostavljavec.getDostavljalecKoordinateX();
+         koordinate[3] = dostavljavec.getDostavljalecKoordinataY();
+      }
+      else {
+         koordinate[2] = n.getRestavracija().getRestavracijaKoordinataX();
+         koordinate[3] = n.getRestavracija().getRestavracijaKoordinataY();
+      }
+
+      return koordinate;
    }
    
    /** @pdOid 0a38bd2c-88aa-484c-85f6-934c348b66fb */
@@ -35,7 +48,6 @@ public class PreveriLokacijoNarocila {
    
    /** @pdOid 4ed92a9e-7610-4a6c-b10f-3b9dedc2bef5 */
    public List<Narocilo> getPreteklaNarocila() {
-      // TODO: implement
       return uporabnik.getPreteklaNarocila();
    }
    

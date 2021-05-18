@@ -23,6 +23,7 @@ public class ZmSledilniZahtevek extends AppCompatActivity {
    private Spinner narocilaSpinner;
    private List<Narocilo> narociloList;
    private TextView restavracijaTextView;
+   private double[] koordinate;
 
    Dostavljavec d0 = new Dostavljavec(
            0,
@@ -105,8 +106,9 @@ public class ZmSledilniZahtevek extends AppCompatActivity {
    /** @param narocilo
     * @pdOid e2c8ea13-2d12-4b1f-ba28-b0d1413dec7a */
    public void izberiNarocilo(Narocilo narocilo) {
-      restavracijaTextView.setText(narocilo.toString());
-      // TODO: implement
+      koordinate = preveriLokacijoNarocila.getPodatkiNarocila(narocilo);
+
+      prikaziZemljevid(koordinate, izracunajCasDostave(koordinate));
    }
    
    /** @pdOid e59af67f-356e-43b6-b36b-0b979464510f */
@@ -133,7 +135,6 @@ public class ZmSledilniZahtevek extends AppCompatActivity {
 
       });
 
-      // TODO: implement
    }
    
    /** @param koordinate
