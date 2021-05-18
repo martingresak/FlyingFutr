@@ -27,7 +27,7 @@ public class ZM_SledilniZahtevek extends AppCompatActivity {
    private TextView restavracijaTextView, casDostaveTextView, vsebinaTextView;
    private double[] koordinate;
    private ImageView zemljevidImageView;
-   private ImageView userImageView;
+   private ImageView userImageView,deliveryImageView;
 
    Dostavljavec d0 = new Dostavljavec(
            0,
@@ -103,6 +103,7 @@ public class ZM_SledilniZahtevek extends AppCompatActivity {
       vsebinaTextView = (TextView) findViewById(R.id.vsebinaTextView);
       zemljevidImageView = (ImageView) findViewById(R.id.zemljevidImageView);
       userImageView = (ImageView) findViewById(R.id.userImageView);
+      deliveryImageView = (ImageView) findViewById(R.id.deliveryImageView);
 
       u0.addAktivnoNarocilo(n0);
       u0.addPretekloNarocilo(n1);
@@ -182,10 +183,19 @@ public class ZM_SledilniZahtevek extends AppCompatActivity {
 
       RelativeLayout.LayoutParams params1 =new RelativeLayout.LayoutParams(100, 100);
 
-      params1.leftMargin = zemljevidImageView.getWidth()/2 -160;
-      params1.topMargin = zemljevidImageView.getHeight() / 2 -100;
+      params1.leftMargin = zemljevidImageView.getWidth() / 2 - 160;
+      params1.topMargin = zemljevidImageView.getHeight() / 2 - 100;
 
       userImageView.setLayoutParams(params1);
+
+      RelativeLayout.LayoutParams params2 =new RelativeLayout.LayoutParams(100, 100);
+
+      double p = zemljevidImageView.getWidth() / 60.0;
+      double w = zemljevidImageView.getHeight() / 60.0;
+      params2.leftMargin = (int)Math.round(zemljevidImageView.getWidth() / 2.0 - 160 + koordinate[2] * p);
+      params2.topMargin = (int)Math.round(zemljevidImageView.getHeight() / 2.0 - 100 + koordinate[3] * w);
+
+      deliveryImageView.setLayoutParams(params2);
 
    }
    
