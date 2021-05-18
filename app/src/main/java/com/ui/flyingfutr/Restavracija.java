@@ -16,17 +16,22 @@ public class Restavracija {
    private double koordinataX;
    /** @pdOid 05103bca-d8c9-4f00-b9ed-ccab1552945c */
    private double koordinataY;
+
+   Restavracija(int id, String ime, double koordinataX, double koordinataY){
+      this.id = id;
+      this.ime = ime;
+      this.koordinataX = koordinataX;
+      this.koordinataY = koordinataY;
+   }
    
    /** @pdOid 36163640-16bc-4aee-8dd1-f4eb864a0f28 */
    public double getRestavracijaKoordinataX() {
-      // TODO: implement
-      return 0;
+      return koordinataX;
    }
    
    /** @pdOid f37d9565-a93e-446d-8ecc-5d904422f02f */
    public double getRestavracijaKoordinataY() {
-      // TODO: implement
-      return 0;
+      return koordinataY;
    }
 
 }

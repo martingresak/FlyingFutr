@@ -21,34 +21,38 @@ public class Uporabnik {
    /** @pdOid 7109816d-4de9-49e3-a80f-afd1e77262d1 */
    private String phoneNo;
    /** @pdOid ddaa3204-bbcf-4148-8817-d076279fad42 */
-   private Narocilo[] aktivnaNarocila;
+   private List<Narocilo> aktivnaNarocila;
    /** @pdOid b22677fb-6336-415e-9625-3e1e7abe05a8 */
-   private Narocilo[] preteklaNarocila;
+   private List<Narocilo> preteklaNarocila;
    /** @pdOid e8374ee5-0d0e-4179-ad6c-4968c13d636d */
    private boolean student;
+
+   Uporabnik(int id, String firstName, String lastName, double koordinataX, double koordinataY) {
+      this.id = id;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.koordinataX = koordinataX;
+      this.koordinataY = koordinataY;
+   }
    
    /** @pdOid 62136d5c-3182-4c37-9f27-a9438406c9a2 */
    public double getUporabnikKoordinataX() {
-      // TODO: implement
-      return 0;
+      return koordinataX;
    }
    
    /** @pdOid a2c39bc8-ca16-4fd6-b04a-2d9a87c0f965 */
    public double getUporabnikKoordinataY() {
-      // TODO: implement
-      return 0;
+      return koordinataY;
    }
    
    /** @pdOid 9897d892-6904-4152-a250-b8635a2453c2 */
-   public Narocilo[] getAktivnaNarocila() {
-      // TODO: implement
-      return null;
+   public List<Narocilo> getAktivnaNarocila() {
+      return aktivnaNarocila;
    }
    
    /** @pdOid 72c75c38-f32c-4195-8dc3-f5ce25949af9 */
-   public Narocilo[] getPreteklaNarocila() {
-      // TODO: implement
-      return null;
+   public List<Narocilo> getPreteklaNarocila() {
+      return preteklaNarocila;
    }
 
 }
